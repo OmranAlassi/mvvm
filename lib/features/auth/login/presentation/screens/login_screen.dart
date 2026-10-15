@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/routes/app_route_const.dart';
-import '../../../../core/utils/validators.dart';
-import '../../manger/cubit/auth_cubit.dart';
+import '../../../../../core/routes/app_route_const.dart';
+import '../../../../../core/utils/validators.dart';
+import '../../manger/cubit/login_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   const new({super.key});
@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(
+    return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
           ScaffoldMessenger.of(context)
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : ElevatedButton(
                                     onPressed: () {
                                       if (loginKey.currentState!.validate()) {
-                                        context.read<AuthCubit>().login(
+                                        context.read<LoginCubit>().login(
                                           phone: phoneController.text,
                                         );
                                       }

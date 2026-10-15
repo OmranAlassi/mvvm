@@ -1,4 +1,4 @@
-import '../../../../core/const/end_point.dart';
+import '../../../../../core/const/end_point.dart';
 
 import 'user_model.dart';
 

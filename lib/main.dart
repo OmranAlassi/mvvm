@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'core/utils/cache/cache_helper.dart';
 
+import 'injection_container.dart' as sl;
 import 'core/routes/app_route.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper().init();
+  await sl.init();
   runApp(const MyApp());
 }
 
