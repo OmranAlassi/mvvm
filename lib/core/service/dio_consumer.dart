@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../../injection_container.dart';
 import '../const/end_point.dart';
 import '../errors/exceptions.dart';
 import 'api_consumer.dart';
@@ -10,17 +11,8 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoint.baseUrl;
-    dio.interceptors.add(ApiInterceptor());
-    dio.interceptors.add(
-      LogInterceptor(
-        request: true,
-        requestBody: true,
-        requestHeader: true,
-        responseBody: true,
-        responseHeader: true,
-        error: true,
-      ),
-    );
+    dio.interceptors.add(sl<ApiInterceptor>());
+    dio.interceptors.add(sl<LogInterceptor>());
   }
   @override
   Future<dynamic> delete(

@@ -1,7 +1,9 @@
 //تحكم في الريكوست
 import 'package:dio/dio.dart';
-import 'package:mvvm/core/const/end_point.dart';
-import 'package:mvvm/core/utils/cache/cache_helper.dart';
+
+import '../../injection_container.dart';
+import '../const/end_point.dart';
+import '../utils/cache/cache_helper.dart';
 
 class ApiInterceptor extends Interceptor {
   @override
@@ -9,10 +11,9 @@ class ApiInterceptor extends Interceptor {
     options.headers[ApiKey.contentType] = 'application/json';
     options.headers[ApiKey.accept] = 'application/json';
     options.headers[ApiKey.acceptLanguage] = 'ar';
+    final token = sl<CacheHelper>().getData(key: ApiKey.token);
     options.headers[ApiKey.authorization] =
-        CacheHelper().getData(key: ApiKey.token) != null
-        ? 'Bearer ${CacheHelper().getData(key: ApiKey.token)}'
-        : null;
+        token != null ? 'Bearer $token' : null;
     super.onRequest(options, handler);
   }
 }
