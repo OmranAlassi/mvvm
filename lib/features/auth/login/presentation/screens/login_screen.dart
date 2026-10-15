@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mvvm/common/widgets/app_snack_bar.dart';
 import 'package:mvvm/common/widgets/app_text_formfield.dart';
 
 import '../../../../../core/routes/app_route_const.dart';
@@ -28,12 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginSuccess) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("success")));
+          AppSnackBar.showSuccess(context, "success");
           context.push(AppRouteConst.home);
         } else if (state is LoginError) {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(state.errMessage)));
+          AppSnackBar.showError(context, state.errMessage);
         }
       },
       builder: (context, state) {
@@ -96,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           Padding(
                             padding: const EdgeInsets.all(14),
-                            //! The AppTextFormfield is Componet 
+                            //! The AppTextFormfield is Componet
                             child: AppTextFormfield(
                               validator: (value) => Validators.phone(value),
                               controller: phoneController,
