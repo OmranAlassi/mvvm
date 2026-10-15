@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mvvm/common/widgets/app_text_formfield.dart';
 
 import '../../../../../core/routes/app_route_const.dart';
 import '../../../../../core/utils/validators.dart';
@@ -95,46 +96,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                           Padding(
                             padding: const EdgeInsets.all(14),
-                            child: TextFormField(
+                            //! The AppTextFormfield is Componet 
+                            child: AppTextFormfield(
                               validator: (value) => Validators.phone(value),
                               controller: phoneController,
-                              textAlignVertical: TextAlignVertical.center,
-                              decoration: InputDecoration(
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 40,
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 12,
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.phone,
-                                  color: Colors.blue,
-                                ),
-                                hintText: 'Phone Number',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey.shade500,
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey.shade300,
-                                  ),
-                                ),
-                                focusedBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.blue,
-                                    width: 1.5,
-                                  ),
-                                ),
-                                errorBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.red),
-                                ),
-                                focusedErrorBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.red,
-                                    width: 1.5,
-                                  ),
-                                ),
-                              ),
+                              hintText: 'Phone Number',
                             ),
                           ),
 
