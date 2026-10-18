@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm/core/const/colors_const.dart';
 
 class AppTextFormfield extends StatelessWidget {
   final String? Function(String?) validator;
@@ -20,14 +21,14 @@ class AppTextFormfield extends StatelessWidget {
       decoration: InputDecoration(
         prefixIconConstraints: const BoxConstraints(minWidth: 40),
         contentPadding: const EdgeInsets.symmetric(vertical: 12),
-        prefixIcon: Icon(Icons.phone, color: Colors.blue),
+        prefixIcon: Icon(Icons.phone, color: ColorsConst.appColor),
         hintText: hintText,
         hintStyle: TextStyle(color: Colors.grey.shade500),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.grey.shade300),
         ),
         focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.blue, width: 1.5),
+          borderSide: BorderSide(color: ColorsConst.appColor, width: 1.5),
         ),
         errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.red),
